@@ -26,40 +26,35 @@ CREATE DATABASE todo;
 
 2. **Configure your credentials:**
 
-Open `src/main/resources/application.properties` and update the default values:
+You have **two options**:
+
+### Option A: Modify the default values (Easiest)
+
+Open `src/main/resources/application.properties` and update the values **after the colons (`:`)**:
 ```properties
 spring.datasource.url=${DB_URL:jdbc:mysql://localhost:3307/todo?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Europe/Rome}
 spring.datasource.username=${DB_USERNAME:root}
 spring.datasource.password=${DB_PASSWORD:your_password_here}
 ```
 
-Replace `your_password_here` with your actual MySQL password.
-
-> 💡 **Tip:** For production, use environment variables instead of hardcoded values.
-
-3. The application will automatically create the necessary tables on first run thanks to `spring.jpa.hibernate.ddl-auto=update`.
-
-## 🔧 Installation & Run
-
-1. **Clone the repository:**
-```bash
-git clone https://github.com/CostanzoMartino/spring-boot-todo-api.git
-cd spring-boot-todo-api
+For example, if your MySQL password is `secret123`, change it to:
+```properties
+spring.datasource.password=${DB_PASSWORD:secret123}
 ```
 
-2. **Update database credentials** in `application.properties`
+> 💡 **Note:** The values after `:` are default values used when environment variables are not set. Simply modify these defaults to match your MySQL configuration.
 
-3. **Build and run:**
-```bash
-mvn clean install
+### Option B: Use environment variables (Optional, for production-like setup)
+
+Set environment variables before running the application:
+
+**Windows (PowerShell):**
+```powershell
+$env:DB_URL="jdbc:mysql://localhost:3307/todo?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Europe/Rome"
+$env:DB_USERNAME="root"
+$env:DB_PASSWORD="your_password"
 mvn spring-boot:run
 ```
-
-The application will start on `http://localhost:8080`
-
-### Alternative: Using Environment Variables
-
-You can also set credentials via environment variables (recommended for production):
 
 **Linux/Mac:**
 ```bash
@@ -69,13 +64,8 @@ export DB_PASSWORD="your_password"
 mvn spring-boot:run
 ```
 
-**Windows (PowerShell):**
-```powershell
-$env:DB_URL="jdbc:mysql://localhost:3307/todo?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Europe/Rome"
-$env:DB_USERNAME="root"
-$env:DB_PASSWORD="your_password"
-mvn spring-boot:run
-```
+3. The application will automatically create the necessary tables on first run thanks to `spring.jpa.hibernate.ddl-auto=update`.
+
 
 ## 🔌 API Endpoints
 
