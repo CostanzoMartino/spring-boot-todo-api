@@ -248,7 +248,7 @@ This project demonstrates:
 
 **Your Name**
 - GitHub: [@CostanzoMartino](https://github.com/CostanzoMartino)
-- LinkedIn: [Your Profile](https://linkedin.com/in/costanzomartino)
+- LinkedIn: [Costanzo Martino](https://linkedin.com/in/costanzomartino)
 
 ## 📄 License
 
